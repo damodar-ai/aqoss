@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Header & Footer</title>
+</head>
+<body>
+    <div id="header"></div>
+    
+    
+    <h1 style="color: aqua;">Welcome to Our Website</h1>
+    <p>Content goes here...</p>
+    
+
+    <div id="footer"></div>
+
+    <script>
+        // Function to load external HTML content into a div using async/await
+        async function loadHTML(url, elementId) {
+            try {
+                const response = await fetch(url);  // Wait for the fetch to resolve
+                const html = await response.text();  // Convert the response to text
+                document.getElementById(elementId).innerHTML = html;  // Insert the content
+            } catch (error) {
+                console.error('Error loading HTML:', error);  // Error handling
+            }
+        }
+
+        // Load the header and footer
+        loadHTML('header.html', 'header');
+        loadHTML('footer.html', 'footer');
+    </script>
+</body>
+</html>
